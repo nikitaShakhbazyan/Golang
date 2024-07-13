@@ -26,11 +26,26 @@ func main () {
 
     array := [8]int{1, 2, 3, 4, 5, 6, 7, 8}
 	
-	for i:=1 ; i<= len(array); i++{
-		if i % 2 == 0{
-			fmt.Println(i,"EVEN")
-		} else {
-			fmt.Println(i,"odd")
-		}
-	}
+	// for i:=1 ; i<= len(array); i++{
+	// 	if i % 2 == 0{
+	// 		fmt.Println(i,"EVEN")
+	// 	} else {
+	// 		fmt.Println(i,"odd")
+	// 	}
+	// }
+
+	for i := 0; i < len(array); i++ {
+        switch array[i] {
+        case 0:
+            fmt.Println("Zero")
+        case 1:
+            fmt.Println("One")
+        case 2:
+            fmt.Println("Two")
+        case 3:
+            fmt.Println("Three")
+        default:
+            fmt.Println("Other number")
+        }
+    }
 }
