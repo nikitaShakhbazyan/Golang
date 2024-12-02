@@ -5,18 +5,28 @@ import (
 	"net/http"
 )
 
-func handlerHttp (w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w,"HTTP")
+
+func greeting (name string) string {
+    message := fmt.Sprintf("Hi, %v Welcome!", name)
+	return message
 }
 
 func main () {
+	myMessage := "Nikita"
+	log := greeting(myMessage)
+	fmt.Println(log)
 
-	http.HandleFunc("/main",handlerHttp)
+	http.HandleFunc("/",server)
+	http.HandleFunc("/notMain",notMain)
 
-	fmt.Println("server is started on port 8080")
+	fmt.Println("Server is running on host 8081")
+	http.ListenAndServe(":8081",nil)
+}
 
-	if err := http.ListenAndServe(":8080",nil); err != nil {
-		fmt.Println("Error starting server",err)
-	}
+func server (w http.ResponseWriter , r *http.Request) {
+	fmt.Fprintln(w,"Hello world")
 
+}
+func notMain (w http.ResponseWriter , r *http.Request) {
+	fmt.Fprintln(w,"This is not the main page n*ga")
 }
