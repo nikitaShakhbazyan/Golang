@@ -3,12 +3,13 @@ package main
 // import "fmt"
 
 func main() {
-	cards := deck{"Ace of Diamonds",newCard()}
-	cards = append(cards, "IDK") //adding to the end
-	
+	// Приводим результат newCard() к типу string
+	cards := deck{"Ace of Diamonds", string(newCard())}
+	cards = append(cards, "IDK") 
 	cards.print()
 }
 
-func newCard()string {
-	return "Five of Diamonds"
+// Функция для создания новой карты, возвращающая тип carding
+func newCard() carding {
+	return carding("Five of Diamonds")
 }
