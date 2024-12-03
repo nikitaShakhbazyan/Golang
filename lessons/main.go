@@ -3,28 +3,23 @@ package main
 import "fmt"
 
 func main() {
-	// var card string = "Ace of Spades"
-	// // type can be declared in this case like this
-	// card = "DIDID"
-	// var example float64 = 3132.22
-	// var integer int = 2003
-	// var logic bool = false
-	// fmt.Println(card)
-	// fmt.Println(example)
-	// fmt.Println(integer)
-	// fmt.Println(logic)
+	cards := []string{"Ace of Diamonds",newCard()}
+	cards = append(cards, "IDK") //adding to the end
+	
 
-	// card2 := "IDK"
-	// // and here we can write value without declaring type but if we write another type to the variable there will be an error
-	// // card2 = false
-	// fmt.Println(card2)
+	// first syntax
 
-	newCardVar := newCard()
-	fmt.Println(newCardVar)
+	// for i:=0; i<len(cards); i++ {
+	// 	fmt.Println(i,cards[i])
+	// }
+
+	// second syntax
+
+	for i,card:=range cards {
+		fmt.Println(i,card)
+	}
 }
 
-
-
-func newCard() int {
-	return 105
+func newCard()string {
+	return "Five of Diamonds"
 }
