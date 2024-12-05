@@ -8,14 +8,10 @@ import (
 	"time"
 )
 
-func fetchWeather(city string) string {
-	var data struct {
-		Main struct {
-			Temp float64 `json:"temp"`
-		} `json:"main"`
-	}
+func fetchPrice(currency string) string {
+	var data map[string]float64
 
-	url := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?q=%s&units=metric&appid=10cdd5e70108c087661ce63737780047", city)
+	url := fmt.Sprintf("https://min-api.cryptocompare.com/data/price?fsym=%s&tsyms=USD", currency)
 	resp, err := http.Get(url)
 
 	if err != nil {
@@ -36,16 +32,16 @@ func fetchWeather(city string) string {
 		return ""
 	}
 
-	return fmt.Sprintf("The temperature in %s is %.2f°C", city, data.Main.Temp)
+	return fmt.Sprintf("The price of %s is %.2f USD", currency, data["USD"])
 }
 
 func main() {
 	startNow := time.Now()
-	cities := []string{"Tbilisi", "London", "Paris", "Tokyo"}
+	currencies := []string{"BTC", "XRP"}
 
-	for _, city := range cities {
-		data := fetchWeather(city)
-		fmt.Println("This is data", data)
+	for _, currency := range currencies {
+		data := fetchPrice(currency)
+		fmt.Println(data)
 	}
 	fmt.Println("The operation took:", time.Since(startNow))
 }
