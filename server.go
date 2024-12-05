@@ -11,10 +11,18 @@ func greeting (name string) string {
 	return message
 }
 
+func asking (question string) string {
+	message := fmt.Sprintf(question)
+	return message
+}
+
 func main () {
 	myMessage := "Nikita"
+	myAsking := "How are you?"
 	log := greeting(myMessage)
+	askingLog := asking(myAsking)
 	fmt.Println(log)
+	fmt.Println(askingLog)
 
 	http.HandleFunc("/",server)
 	http.HandleFunc("/notMain",notMain)
