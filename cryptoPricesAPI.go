@@ -37,7 +37,7 @@ func fetchPrice(currency string) string {
 
 func main() {
 	startNow := time.Now()
-	currencies := []string{"BTC", "XRP"}
+	currencies := []string{"BTC", "XRP","ADA"}
 
 	for _, currency := range currencies {
 		data := fetchPrice(currency)
